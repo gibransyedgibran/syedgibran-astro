@@ -1,0 +1,149 @@
+---
+const {
+  title = "Syed Gibran — Rebuilding in Public",
+  description = "Testing marketing on myself. Writing what happens. For the version of you that felt lost and didn't know where to start.",
+  canonical = "https://syedgibran.com/",
+  ogType = "website"
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind + Global Styles -->
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX2TRBDVJ2"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WX2TRBDVJ2');
+    </script>
+  </head>
+
+  <body>
+
+    <a href="#main-content" class="skip-nav">skip to content</a>
+
+    <!-- NAVIGATION -->
+    <header class="nav">
+      <div class="container nav__inner">
+        <a href="/" class="nav__name">
+          Syed Gibran
+          <svg class="nav__crack" viewBox="0 0 120 6" preserveAspectRatio="none" aria-hidden="true">
+            <path
+              d="M0 4 L18 4 L26 2 L36 5 L43 3 L54 4 L120 4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+        <nav aria-label="Main navigation">
+          <ul class="nav__links">
+            <li><a href="/about/">about</a></li>
+            <li><a href="/blog/">writing</a></li>
+            <li><a href="/contact/">contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <slot />
+
+    <!-- CRACK DIVIDER -->
+    <div class="container">
+      <svg class="crack" viewBox="0 0 720 20" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          d="M0 10 L120 10 L145 4 L170 14 L192 7 L220 11 L258 5 L290 12 L320 8 L360 10 L720 10"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="0.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__left">
+          <span class="footer__name">Syed Gibran</span>
+          <span class="footer__sub">stronger at the fracture</span>
+        </div>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="/about/">about</a>
+          <a href="/blog/">writing</a>
+          <a href="/contact/">contact</a>
+        </nav>
+        <div class="footer__right">
+          <a href="https://x.com/gibrantests" target="_blank" rel="noopener noreferrer" class="footer__social">x</a>
+          <a href="https://linkedin.com/in/syedgibran" target="_blank" rel="noopener noreferrer" class="footer__social">linkedin</a>
+        </div>
+      </div>
+      <div class="container footer__base">
+        <span class="footer__copy">
+          syedgibran.com &nbsp;<span class="footer__dot"></span>&nbsp;
+          rebuilding since April 2026
+        </span>
+      </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d="M8 13V3M3 8l5-5 5 5"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <script>
+      const btn = document.getElementById('scrollTop');
+      window.addEventListener('scroll', () => {
+        btn?.classList.toggle('scroll-top--visible', window.scrollY > 400);
+      });
+      btn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+  </body>
+</html>

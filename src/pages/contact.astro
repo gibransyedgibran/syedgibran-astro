@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact — Syed Gibran"
+  description="You don't need a reason. Just say hi."
+  canonical="https://syedgibran.com/contact/"
+>
+
+  <main id="main-content">
+
+    <section class="contact-header">
+      <div class="container">
+
+        <p class="label">you made it here</p>
+
+        <h1 class="contact-header__title">
+          You don't need<br />a reason.
+        </h1>
+
+        <div class="contact-header__body">
+          <p>
+            You opened this page. That already means something.
+            Most people read and leave. You stayed long enough
+            to wonder if there was a way to reach the person
+            behind the words.
+          </p>
+          <p>
+            Before you talk yourself out of it — and you are
+            already talking yourself out of it — I want you
+            to know something.
+          </p>
+          <p>
+            You don't need a question worth asking or an insight
+            worth sharing or a problem important enough to justify
+            the message. You don't need to have read everything
+            or figured out something profound or have anything
+            to offer in return.
+          </p>
+          <p>You can just say hi.</p>
+          <p>
+            Tell me about your week. Tell me where you are in
+            the rebuild. Tell me what is crumbling right now or
+            what just started to hold. Tell me you are still
+            showing up even though nothing has moved yet.
+          </p>
+          <p>That is enough. That is more than enough.</p>
+          <p>
+            I read everything. It is just me on the other side
+            of this.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="container">
+      <svg class="crack" viewBox="0 0 720 20" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 10 L120 10 L145 4 L170 14 L192 7 L220 11 L258 5 L290 12 L320 8 L360 10 L720 10"
+          fill="none" stroke="currentColor" stroke-width="0.75"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <section class="contact-form-section">
+      <div class="container">
+
+        <form
+          class="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <input type="hidden" name="access_key" value="fd1ad569-8d5f-449d-9cea-37a1b6706835" />
+          <input type="hidden" name="redirect" value="https://syedgibran.com/thankyou/" />
+          <input type="hidden" name="subject" value="New message from syedgibran.com" />
+
+          <div class="contact-form__field">
+            <label for="name" class="contact-form__label">your name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="contact-form__input"
+              placeholder="what do people call you"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="contact-form__field">
+            <label for="email" class="contact-form__label">your email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="contact-form__input"
+              placeholder="so I can write back"
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="contact-form__field">
+            <label for="message" class="contact-form__label">your message</label>
+            <textarea
+              id="message"
+              name="message"
+              class="contact-form__textarea"
+              placeholder="say anything. hi is enough."
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="contact-form__submit">
+            send it
+          </button>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+</Layout>

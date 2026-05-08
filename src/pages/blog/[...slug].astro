@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return data.draft !== true;
+  });
+
+  posts.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+  return posts.map((post, index) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      prevPost: index > 0 ? posts[index - 1] : null,
+      nextPost: index < posts.length - 1 ? posts[index + 1] : null,
+    },
+  }));
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout
+  title={`${post.data.title} — Syed Gibran`}
+  description={post.data.description}
+  canonical={`https://syedgibran.com/blog/${post.id}/`}
+  ogType="article"
+>
+
+  <main id="main-content">
+    <article class="post">
+      <div class="container">
+
+        <header class="post__header">
+          <div class="post__meta">
+            <span class="label"><span class="re">re</span>building in public</span>
+            <span class="post__date">{formattedDate}</span>
+          </div>
+          <h1 class="post__title">{post.data.title}</h1>
+        </header>
+
+        <div class="post__body">
+          <Content />
+        </div>
+
+        <nav class="post__nav" aria-label="Post navigation">
+          {prevPost ? (
+            <a href={`/blog/${prevPost.id}/`} class="post__nav-link post__nav-link--prev">
+              <span class="post__nav-label">previous</span>
+              <span class="post__nav-title">{prevPost.data.title}</span>
+            </a>
+          ) : (
+            <div></div>
+          )}
+          {nextPost ? (
+            <a href={`/blog/${nextPost.id}/`} class="post__nav-link post__nav-link--next">
+              <span class="post__nav-label">next</span>
+              <span class="post__nav-title">{nextPost.data.title}</span>
+            </a>
+          ) : (
+            <div></div>
+          )}
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+</Layout>
