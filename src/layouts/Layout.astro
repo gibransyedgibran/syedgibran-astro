@@ -72,9 +72,21 @@ const {
         </a>
         <nav aria-label="Main navigation">
           <ul class="nav__links">
-            <li><a href="/about/">about</a></li>
-            <li><a href="/blog/">writing</a></li>
-            <li><a href="/contact/">contact</a></li>
+            <li>
+              <a href="/about/" class={Astro.url.pathname.startsWith('/about') ? 'nav__active' : ''}>
+                about
+              </a>
+            </li>
+            <li>
+              <a href="/blog/" class={Astro.url.pathname.startsWith('/blog') ? 'nav__active' : ''}>
+                writing
+              </a>
+            </li>
+            <li>
+              <a href="/contact/" class={Astro.url.pathname.startsWith('/contact') ? 'nav__active' : ''}>
+                contact
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
