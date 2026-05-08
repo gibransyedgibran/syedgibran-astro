@@ -34,3 +34,5 @@ jobs:
           local-dir: ./dist/
           server-dir: /domains/syedgibran.com/public_html/
           dangerous-clean-slate: true
+          protocol: ftp
+          port: 21
