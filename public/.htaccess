@@ -1,5 +1,16 @@
 Options -Indexes
 
+# Redirects from old URLs to new blog URLs
+
+Redirect 301 /why-i-am-treating-this-website-as-a-marketing-lab/ /blog/why-i-am-treating-this-website-as-a-marketing-lab/
+Redirect 301 /what-actually-matters-marketing-site/ /blog/what-actually-matters-marketing-site/
+Redirect 301 /what-actually-happens-after-you-go-live/ /blog/what-actually-happens-after-you-go-live/
+Redirect 301 /distribution-doesnt-create-attention/ /blog/distribution-doesnt-create-attention/
+Redirect 301 /nothing-was-working-started-paying-attention/ /blog/nothing-was-working-started-paying-attention/
+Redirect 301 /nothing-on-the-door-that-says-its-mine/ /blog/nothing-on-the-door-that-says-its-mine/
+
+# Handle clean URLs
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
