@@ -48,6 +48,62 @@ const {
       gtag('js', new Date());
       gtag('config', 'G-WX2TRBDVJ2');
     </script>
+    <!-- Schema Markup -->
+    {ogType === 'article' ? (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title.replace(' — Syed Gibran', ''),
+        "description": description,
+        "url": canonical,
+        "author": {
+          "@type": "Person",
+          "name": "Syed Gibran",
+          "url": "https://syedgibran.com/about/"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Syed Gibran",
+          "url": "https://syedgibran.com"
+        }
+      })} />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://syedgibran.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Writing",
+            "item": "https://syedgibran.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": title.replace(' — Syed Gibran', ''),
+            "item": canonical
+          }
+        ]
+      })} />
+    ) : (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Syed Gibran",
+        "url": "https://syedgibran.com",
+        "description": "Testing marketing on myself. Writing what happens.",
+        "author": {
+          "@type": "Person",
+          "name": "Syed Gibran"
+        }
+      })} />
+    )}
   </head>
 
   <body>
