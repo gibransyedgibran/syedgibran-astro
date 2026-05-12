@@ -4,3 +4,4 @@ Allow: /
 Disallow: /thankyou/
 
 Sitemap: https://syedgibran.com/sitemap.xml
+RSS: https://syedgibran.com/rss.xml

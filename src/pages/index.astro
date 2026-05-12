@@ -1,5 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const formatDate = (date) => date.toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+});
 ---
 
 <Layout
@@ -137,43 +149,15 @@ import Layout from '../layouts/Layout.astro';
       <div class="container">
         <p class="label">the fractures</p>
         <div class="posts__grid">
-
-          <a href="/blog/nothing-on-the-door-that-says-its-mine/" class="post__row">
-            <span class="post__number">06</span>
-            <span class="post__row-title">Nothing On The Door That Says It's Mine</span>
-            <span class="post__date">May 1</span>
-          </a>
-
-          <a href="/blog/nothing-was-working-started-paying-attention/" class="post__row">
-            <span class="post__number">05</span>
-            <span class="post__row-title">Nothing Was Working. So I Started Paying Attention.</span>
-            <span class="post__date">Apr 24</span>
-          </a>
-
-          <a href="/blog/distribution-doesnt-create-attention/" class="post__row">
-            <span class="post__number">04</span>
-            <span class="post__row-title">Distribution Doesn't Create Attention</span>
-            <span class="post__date">Apr 17</span>
-          </a>
-
-          <a href="/blog/what-actually-happens-after-you-go-live/" class="post__row">
-            <span class="post__number">03</span>
-            <span class="post__row-title">What Actually Happens After You Go Live</span>
-            <span class="post__date">Apr 10</span>
-          </a>
-
-          <a href="/blog/what-actually-matters-marketing-site/" class="post__row">
-            <span class="post__number">02</span>
-            <span class="post__row-title">What Actually Matters When Building Your First Marketing Site</span>
-            <span class="post__date">Apr 5</span>
-          </a>
-
-          <a href="/blog/why-i-am-treating-this-website-as-a-marketing-lab/" class="post__row">
-            <span class="post__number">01</span>
-            <span class="post__row-title">Why I am Treating This Website as a Marketing Lab</span>
-            <span class="post__date">Apr 1</span>
-          </a>
-
+          {posts.map((post, index) => (
+            <a href={`/blog/${post.id}/`} class="post__row">
+              <span class="post__number">
+                {String(posts.length - index).padStart(2, '0')}
+              </span>
+              <span class="post__row-title">{post.data.title}</span>
+              <span class="post__date">{formatDate(post.data.date)}</span>
+            </a>
+          ))}
         </div>
         <a href="/blog/" class="posts__more">
           <span>follow the rebuild</span>
