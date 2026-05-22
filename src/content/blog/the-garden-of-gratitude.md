@@ -1,7 +1,7 @@
 ---
 title: "The Garden of Gratitude"
 description: "Four days ago I turned 33. I have been sitting with gratitude in my chest. This is what it feels like."
-date: 2026-05-15
+date: 2026-05-22
 ---
 
 I am writing this blog while I sit in a quiet room on the 5th floor of a hotel. I am working on a table with a beautiful mirror in front of me, there's a lamp besides my laptop which is beautiful even when sitting there doing nothing. From my left, the natural light is flooding in the room through a glass wall; filling everything with a gentle brightness, filtered through the white curtains. My feet are on the carpet that feels so soft that I just wanna lie down on it.
