@@ -4,6 +4,7 @@ const {
   description = "Testing marketing on myself. Writing what happens. For the version of you that felt lost and didn't know where to start.",
   canonical = "https://syedgibran.com/",
   ogType = "website"
+  ogImage = "/logo.png"
 } = Astro.props;
 ---
 
@@ -23,6 +24,9 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`https://syedgibran.com${ogImage}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={`https://syedgibran.com${ogImage}`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />

@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
-
+const ogImagePath = `/og/${post.id}.png`;
 const formattedDate = post.data.date.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -34,6 +34,7 @@ const formattedDate = post.data.date.toLocaleDateString('en-US', {
   description={post.data.description}
   canonical={`https://syedgibran.com/blog/${post.id}/`}
   ogType="article"
+  ogImage={ogImagePath}
 >
 
   <main id="main-content">
